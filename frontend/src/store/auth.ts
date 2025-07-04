@@ -3,7 +3,7 @@ import { ref, type Ref } from 'vue';
 import axios from 'axios';
 import type { User } from '@/types';
 
-const STRAPI_API_URL = import.meta.env.VITE_STRAPI_API_URL;
+const STRAPI_API_URL = import.meta.env.VITE_API_URL;
 
 export const useAuthStore = defineStore(
   'auth',
