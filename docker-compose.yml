@@ -4,7 +4,8 @@ services:
     ports:
       - "1337:1337"
     environment:
-      URL: http://YOUR_SERVER_IP:1337 # <--- این خط را اضافه کنید
+      URL: ${URL}
+      CORS_ORIGIN: ${CORS_ORIGIN}
       DATABASE_CLIENT: postgres
       DATABASE_HOST: db
       DATABASE_PORT: 5432

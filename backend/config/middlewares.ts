@@ -1,6 +1,4 @@
-// path: config/middlewares.js
-
-module.exports = [
+export default ({ env }) => [
   "strapi::errors",
   "strapi::security",
   {
@@ -8,16 +6,8 @@ module.exports = [
     config: {
       enabled: true,
       headers: "*",
-      origin: [
-        "http://localhost:5174", // <--- آدرس صحیح فرانت‌اند شما
-        "http://localhost:5173", // آدرس قبلی (اگر لازم دارید نگه دارید)
-        "http://127.0.0.1:5173", // آدرس قبلی (اگر لازم دارید نگه دارید)
-        // در صورت نیاز می‌توانید 127.0.0.1:5174 را هم اضافه کنید،
-        // اما معمولا localhost:5174 کافی است.
-        // "http://127.0.0.1:5174"
-      ],
-      // بهتر است methods و credentials را هم مشخص کنید (مانند مثال قبلی)
-      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"],
+      origin: env.array("CORS_ORIGIN", ["http://localhost:5173"]),
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       credentials: true,
     },
   },
