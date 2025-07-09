@@ -26,6 +26,9 @@ services:
     build: ./frontend
     ports:
       - "80:80"
+    # این بخش برای فرانت‌اند اضافه شده است
+    environment:
+      VITE_API_URL: ${VITE_API_URL}
     depends_on:
       - backend
     restart: unless-stopped
