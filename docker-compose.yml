@@ -4,18 +4,18 @@ services:
     ports:
       - "1337:1337"
     environment:
-      URL: ${URL}
-      CORS_ORIGIN: ${CORS_ORIGIN}
+      URL: http://45.159.149.160:1337
+      CORS_ORIGIN: http://45.159.149.160
       DATABASE_CLIENT: postgres
       DATABASE_HOST: db
       DATABASE_PORT: 5432
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      APP_KEYS: ${APP_KEYS}
-      API_TOKEN_SALT: ${API_TOKEN_SALT}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      JWT_SECRET: ${JWT_SECRET}
+      DATABASE_NAME: strapi_db
+      DATABASE_USERNAME: strapiuser
+      DATABASE_PASSWORD: Hajehs@n014709121474234
+      APP_KEYS: Hiog2CQXtyCpKgEg360Qb03RwFXZafWycIdD1ueItwQ=,tyhm9m/lCxZ8vE7/FokwdOOl6wPZdRA9zLToNPNe8Y0=
+      API_TOKEN_SALT: 2zer5ow1Xjstie7QEYYcgq9aGT70krRdqOela57n2cc=
+      ADMIN_JWT_SECRET: q/HhQ40PdOD+coo0XrlTq+qjvz58r4kIGQwJeGZadbM=
+      JWT_SECRET: XrCBgApPrv1maXqo80zVYjA9Og2kw8rCzQDRgiJS3b0=
     volumes:
       - strapi-uploads:/opt/app/public/uploads
     depends_on:
@@ -26,9 +26,8 @@ services:
     build: ./frontend
     ports:
       - "80:80"
-    # این بخش برای فرانت‌اند اضافه شده است
     environment:
-      VITE_API_URL: ${VITE_API_URL}
+      VITE_API_URL: http://45.159.149.160
     depends_on:
       - backend
     restart: unless-stopped
@@ -36,9 +35,9 @@ services:
   db:
     image: postgres:14-alpine
     environment:
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: strapiuser
+      POSTGRES_PASSWORD: Hajehs@n014709121474234
+      POSTGRES_DB: strapi_db
     volumes:
       - strapi-data:/var/lib/postgresql/data
     restart: unless-stopped
