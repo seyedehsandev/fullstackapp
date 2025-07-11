@@ -27,7 +27,7 @@ services:
     ports:
       - "80:80"
     environment:
-      VITE_API_URL: http://45.159.149.160
+      VITE_API_URL: http://45.159.149.160:1337
     depends_on:
       - backend
     restart: unless-stopped
